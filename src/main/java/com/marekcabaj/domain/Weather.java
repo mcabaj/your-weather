@@ -8,6 +8,7 @@ import lombok.Data;
 public class Weather {
 
     private int temperature;
+    private int nightTemperature;
     private int rainChance;
     private int windSpeed;
     private WindDirection windDirection;
