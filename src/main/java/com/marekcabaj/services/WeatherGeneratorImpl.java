@@ -33,6 +33,7 @@ public class WeatherGeneratorImpl implements WeatherGenerator {
     private Weather generateNiceWeather(DayOfWeek dayOfWeek) {
         return Weather.builder()
                 .temperature(generateNumber(20, 30))
+                .nightTemperature(generateNumber(17,21))
                 .rainChance(generateNumber(0, 10))
                 .windSpeed(generateNumber(0, 5))
                 .windDirection(WindDirection.randomWindDirection())
