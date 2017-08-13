@@ -67,15 +67,15 @@
 					<div class="forecast-container">
 						<div class="today forecast" th:object="${currentWeather}">
 							<div class="forecast-header">
-								<div class="day" th:text="${currentWeather.dayOfWeek}">Monday</div>
-								<div class="date">6 Oct</div>
+								<div class="day" "><span  th:text="${currentWeather.dayOfWeek}" class="valueContainer"></span> (Today)</div>
+								<div class="date"></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location" th:text="${city}">New York</div>
 								<div class="degree">
 									<div class="num"><span th:text="${currentWeather.temperature}" class="valueContainer"></span><sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img th:src="'images/weathericons/'+${currentWeather.weatherType}+'.svg'" alt="" width=90>
 									</div>	
 								</div>
 								<span ><img src="images/icon-umberella.png" alt=""><span th:text="${currentWeather.rainChance}" class="valueContainer">20</span>%</span>
@@ -92,8 +92,8 @@
 								<div class="forecast-icon">
 									<img src="images/icons/icon-3.svg" alt="" width=48>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><span  th:text="${weather.temperature}" class="valueContainer"></span><sup>o</sup>C</div>
+								<small><span  th:text="${weather.nightTemperature}" class="valueContainer"></span><sup>o</sup></small>
 							</div>
 						</div>
 
