@@ -23,6 +23,6 @@ public enum WindDirection {
 
     @Override
     public String toString() {
-        return StringUtils.capitalize(super.toString());
+        return StringUtils.capitalize(super.toString().toLowerCase());
     }
 }
