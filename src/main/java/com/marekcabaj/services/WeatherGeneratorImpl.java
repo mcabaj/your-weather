@@ -1,11 +1,11 @@
 package com.marekcabaj.services;
 
+import com.marekcabaj.domain.DayOfWeek;
 import com.marekcabaj.domain.Weather;
 import com.marekcabaj.domain.WeatherType;
 import com.marekcabaj.domain.WindDirection;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +20,14 @@ public class WeatherGeneratorImpl implements WeatherGenerator {
         LocalDate date = LocalDate.now();
         for (int i = 0; i < 6; i++) {
             date = date.plusDays(1);
-            weatherForecast.add(generateNiceWeather(date.getDayOfWeek()));
+            weatherForecast.add(generateNiceWeather(new DayOfWeek(date.getDayOfWeek())));
         }
         return weatherForecast;
     }
 
     @Override
     public Weather getCurrentWeather() {
-        return generateNiceWeather(LocalDate.now().getDayOfWeek());
+        return generateNiceWeather(new DayOfWeek(LocalDate.now().getDayOfWeek()));
     }
 
     private Weather generateNiceWeather(DayOfWeek dayOfWeek) {
