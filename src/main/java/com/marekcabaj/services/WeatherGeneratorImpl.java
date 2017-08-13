@@ -2,8 +2,11 @@ package com.marekcabaj.services;
 
 import com.marekcabaj.domain.Weather;
 import com.marekcabaj.domain.WeatherType;
+import com.marekcabaj.domain.WindDirection;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -14,19 +17,28 @@ public class WeatherGeneratorImpl implements WeatherGenerator {
     @Override
     public List<Weather> getWeatherForecast() {
         List<Weather> weatherForecast = new ArrayList<>();
-        for(int i = 0; i < 6; i++) {
-            weatherForecast.add(generateSunnyWeather());
+        LocalDate date = LocalDate.now();
+        for (int i = 0; i < 6; i++) {
+            date = date.plusDays(1);
+            weatherForecast.add(generateNiceWeather(date.getDayOfWeek()));
         }
         return weatherForecast;
     }
 
     @Override
     public Weather getCurrentWeather() {
-        return generateSunnyWeather();
+        return generateNiceWeather(LocalDate.now().getDayOfWeek());
     }
 
-    private Weather generateSunnyWeather() {
-        return new Weather(generateNumber(20, 30), generateNumber(990, 1030), WeatherType.SUNNY);
+    private Weather generateNiceWeather(DayOfWeek dayOfWeek) {
+        return Weather.builder()
+                .temperature(generateNumber(20, 30))
+                .rainChance(generateNumber(0, 10))
+                .windSpeed(generateNumber(0, 5))
+                .windDirection(WindDirection.randomWindDirection())
+                .weatherType(WeatherType.SUNNY)
+                .dayOfWeek(dayOfWeek)
+                .build();
     }
 
     private int generateNumber(int low, int high) {
