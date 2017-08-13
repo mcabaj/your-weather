@@ -33,6 +33,6 @@ public class WeatherController {
     private void addWeatherAttributes(@PathVariable String city, Model model) {
         model.addAttribute("weatherForecast", weatherGenerator.getWeatherForecast());
         model.addAttribute("currentWeather", weatherGenerator.getCurrentWeather());
-        model.addAttribute("city", StringUtils.capitalize(city));
+        model.addAttribute("city", StringUtils.capitalize(city.toLowerCase()));
     }
 }
