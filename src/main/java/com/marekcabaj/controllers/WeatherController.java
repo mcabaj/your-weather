@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WeatherController {
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String mainPage() {
         return "index";
     }

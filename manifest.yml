@@ -2,3 +2,4 @@
   name: your-weather
   memory: 1024M
   instances: 1
+  path: target/your-weather-0.0.1-SNAPSHOT.jar
