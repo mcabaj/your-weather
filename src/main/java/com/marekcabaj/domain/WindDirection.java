@@ -1,6 +1,6 @@
 package com.marekcabaj.domain;
 
-import org.thymeleaf.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
