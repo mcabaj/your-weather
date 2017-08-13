@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.util.StringUtils;
 
 @Controller
 public class WeatherController {
@@ -17,14 +18,21 @@ public class WeatherController {
         this.weatherGenerator = weatherGenerator;
     }
 
+    @RequestMapping("/")
+    public String mainPage(Model model) {
+        addWeatherAttributes("cracow", model);
+        return "index";
+    }
+
     @RequestMapping("{city}")
-    public String mainPage(@PathVariable String city,  Model model) {
-        if(city == null || city.isEmpty()) {
-            city = "Cracow";
-        }
+    public String cityWeather(@PathVariable String city,  Model model) {
+        addWeatherAttributes(city, model);
+        return "index";
+    }
+
+    private void addWeatherAttributes(@PathVariable String city, Model model) {
         model.addAttribute("weatherForecast", weatherGenerator.getWeatherForecast());
         model.addAttribute("currentWeather", weatherGenerator.getCurrentWeather());
-        model.addAttribute("city", city);
-        return "index";
+        model.addAttribute("city", StringUtils.capitalize(city));
     }
 }
