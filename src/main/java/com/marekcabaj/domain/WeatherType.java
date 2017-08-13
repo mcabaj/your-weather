@@ -1,5 +1,7 @@
 package com.marekcabaj.domain;
 
+import org.thymeleaf.util.StringUtils;
+
 public enum WeatherType {
     RAINY,
     STORMY,
@@ -10,4 +12,10 @@ public enum WeatherType {
     WINDY,
     THUNDER,
     FOGGY;
+
+
+    @Override
+    public String toString() {
+        return StringUtils.capitalize(super.toString());
+    }
 }

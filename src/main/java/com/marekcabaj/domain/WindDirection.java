@@ -1,5 +1,7 @@
 package com.marekcabaj.domain;
 
+import org.thymeleaf.util.StringUtils;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -17,5 +19,10 @@ public enum WindDirection {
 
     public static WindDirection randomWindDirection() {
         return VALUES.get(RANDOM.nextInt(SIZE));
+    }
+
+    @Override
+    public String toString() {
+        return StringUtils.capitalize(super.toString());
     }
 }
