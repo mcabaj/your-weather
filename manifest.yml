@@ -1,0 +1,4 @@
+---
+  name: your-weather
+  memory: 1024M
+  instances: 1
